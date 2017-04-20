@@ -35,17 +35,17 @@ PotatoDetection.isValid({
 ```
 
 ### clearSync() ###
-Clear the entire cache directory synchronously
+Clears the entire cache directory synchronously
 
 ```javascript
 PotatoDetection.clearSync()
 ```
 
 ### clear(callback) ###
-Clear the entire cache directory asynchronously
+Clears the entire cache directory asynchronously
 
 ```javascript
-PotatoDetection.clearSync(() => {
+PotatoDetection.clear(() => {
   ...
 })
 ```
