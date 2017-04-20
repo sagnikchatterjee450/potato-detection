@@ -25,4 +25,4 @@ const PotatoDetection = require('potato-cache')('./path', 'info@example.com')
 On usage of ```isValid()``` function it will return a promise with
 * ```then``` when the outputted result is lower than your allowed result
 * ```catch``` when the outputted result is greater or equal to your allowed result
-* **default** is set to 0.9
+**default** is set to 0.9
