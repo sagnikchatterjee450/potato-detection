@@ -3,7 +3,7 @@
 var PotatoCache
 var contact
 
-var config = module.exports = (path, mail) => {
+module.exports = (path, mail) => {
   if (isType(path, 'string') && isType(mail, 'string')) {
     contact = mail
     PotatoCache = require('potato-cache')(path)
@@ -20,9 +20,9 @@ exports.isValid = (args) => {
       // If IP is not defined, set it
       args.ip = defaultFor(args.ip, require('ip').address())
       // If flags is not defined, set it
-      //args.flags = defaultFor(args.flags, 'b')
+      // args.flags = defaultFor(args.flags, 'b')
       // If oflags is not defined, set it
-      //args.oflags = defaultFor(args.oflags, '')
+      // args.oflags = defaultFor(args.oflags, '')
 
       if (isDefined(args.result)) {
         maxResult = args.result
@@ -32,10 +32,10 @@ exports.isValid = (args) => {
       var url = 'http://check.getipintel.net/check.php?contact=' + contact + '&' + encodeUrl(args)
       console.log(url)
       this.get(url, (data) => {
-        if (data.status == 'error') {
+        if (data.status === 'error') {
           reject(data)
         } else {
-          if(data.result >= maxResult || isDefined(data.BadIP) && data.BadIP === 1) {
+          if (data.result >= maxResult || (isDefined(data.BadIP) && data.BadIP === 1)) {
             reject(data)
           } else {
             resolve(data)
@@ -70,8 +70,8 @@ function encodeUrl (obj) {
   if (isType(obj, 'object')) {
     var str = ''
     for (let key in obj) {
-      if (str != "") str += "&"
-      str += key + "=" + encodeURIComponent(obj[key])
+      if (str !== '') str += '&'
+      str += key + '=' + encodeURIComponent(obj[key])
     }
     return str
   }
