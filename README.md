@@ -21,6 +21,16 @@ const PotatoDetection = require('potato-detection')('./path', 'info@example.com'
 * ```oflags: 'b'``` is used when you want to see if the IP is considered as bad IP. Note that when using flags option, this result can vary.
 * ```oflags: 'c'``` is used when you want to see which country the IP came from / which country the IP belongs to (GeoIP Location). Currently in alpha testing.
 
+```javascript
+PotatoDetection.isValid({
+   ip: 'some ip'
+}).then(data => {
+   console.log('IP is valid: ' + data)
+}).catch(data => {
+   console.log('IP is invalid: ' + data)
+})
+```
+
 ### Expected Output ###
 On usage of ```isValid()``` function it will return a promise with
 * ```then``` when the outputted result is lower than your allowed result
