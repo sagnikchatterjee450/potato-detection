@@ -34,6 +34,22 @@ PotatoDetection.isValid({
 })
 ```
 
+### clearSync() ###
+Clear the entire cache directory synchronously
+
+```javascript
+PotatoDetection.clearSync()
+```
+
+### clear(callback) ###
+Clear the entire cache directory asynchronously
+
+```javascript
+PotatoDetection.clearSync(() => {
+  ...
+})
+```
+
 ### Expected Output ###
 On usage of ```isValid()``` function it will return a promise with
 * ```then``` when the outputted result is lower than your allowed result
