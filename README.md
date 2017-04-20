@@ -22,4 +22,6 @@ const PotatoDetection = require('potato-cache')('./path', 'info@example.com')
 * ```oflags: 'c'``` is used when you want to see which country the IP came from / which country the IP belongs to (GeoIP Location). Currently in alpha testing.
 
 ### Expected Output ###
-On a valid request, the ```isValid() promise``` will return a value between 0 - 1 (inclusive) of how likely the given IP is a proxy
+On a valid request, the ```isValid()``` promise will return 
+* ```then``` when the outputted result is lower than your allowed result
+* ```catch``` when the outputted result is greater or equal to your allowed result
