@@ -60,11 +60,11 @@ exports.get = (url, callback) => {
   }
 }
 
-exports.clear = (callback) => {
+exports.clearCache = (callback) => {
   PotatoCache.trash(callback)
 }
 
-exports.clearSync = () => PotatoCache.trashSync()
+exports.clearCacheSync = () => PotatoCache.trashSync()
 
 function encodeUrl (obj) {
   if (isType(obj, 'object')) {

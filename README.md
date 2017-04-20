@@ -1,6 +1,7 @@
 <img width="100" src="https://raw.githubusercontent.com/feross/standard/master/sticker.png" />
 
-Detect if an IP is a Proxy / VPN or if it's considered bad
+## Why? ##
+Detect if an IP is a Proxy / VPN or if it's considered as bad.
 
 ## Installation ##
 ```javascript
@@ -36,18 +37,18 @@ PotatoDetection.isValid({
 })
 ```
 
-### clearSync() ###
+### clearCacheSync() ###
 Clears the entire cache directory synchronously
 
 ```javascript
-PotatoDetection.clearSync()
+PotatoDetection.clearCacheSync()
 ```
 
-### clear(callback) ###
+### clearCache(callback) ###
 Clears the entire cache directory asynchronously
 
 ```javascript
-PotatoDetection.clear(() => {
+PotatoDetection.clearCache(() => {
   ...
 })
 ```
