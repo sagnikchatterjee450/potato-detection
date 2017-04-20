@@ -20,7 +20,7 @@ exports.isValid = (args) => {
       // If IP is not defined, set it
       args.ip = defaultFor(args.ip, require('ip').address())
       // If flags is not defined, set it
-      args.flags = defaultFor(args.flags, 'b')
+      //args.flags = defaultFor(args.flags, 'b')
       // If oflags is not defined, set it
       //args.oflags = defaultFor(args.oflags, '')
 
@@ -35,10 +35,10 @@ exports.isValid = (args) => {
         if (data.status == 'error') {
           reject(data)
         } else {
-          if(data.result >= maxResult) {
-            resolve(data)
-          } else {
+          if(data.result >= maxResult || isDefined(data.BadIP) && data.BadIP === 1) {
             reject(data)
+          } else {
+            resolve(data)
           }
         }
       })

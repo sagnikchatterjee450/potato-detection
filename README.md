@@ -25,6 +25,8 @@ const PotatoDetection = require('potato-detection')('./path', 'info@example.com'
 
 ```javascript
 PotatoDetection.isValid({
+  oflags: 'bc' // You can combine both b and c to see
+               // if it's a BadIP and what country the IP belongs to
   result: '1',
   ip: 'some ip'
 }).then(data => {
