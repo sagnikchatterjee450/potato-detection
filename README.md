@@ -25,7 +25,8 @@ const PotatoDetection = require('potato-detection')('./path', 'info@example.com'
 
 ```javascript
 PotatoDetection.isValid({
-   ip: 'some ip'
+  result: '1',
+  ip: 'some ip'
 }).then(data => {
    console.log('IP is valid: ' + data)
 }).catch(data => {
