@@ -1,6 +1,6 @@
 {
   "name": "potato-detection",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Detect if your user is hiding behind a Proxy / VPN or if their IP is considered bad",
   "main": "index.js",
   "directories": {
