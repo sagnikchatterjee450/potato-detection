@@ -14,12 +14,11 @@ Include your contact information so the author of [getipintel](http://getipintel
 ```javascript
 const PotatoDetection = require('potato-detection')('./path', 'info@example.com')
 ```
-### Settings for Input ###
-* ```flags: 'm'``` is used when you're only looking for the value of "1" as the result. The **m** flag skips the dynamic checks and only uses static ban lists.
-* ```flags: 'b'``` is used when you want to use static ban and dynamic checks with partial bad IP check. **default**
-* ```flags: 'f'``` is used when you want to force the system to do a full lookup, which can take up to 5 seconds.
-* ```oflags: 'b'``` is used when you want to see if the IP is considered as bad IP. Note that when using flags option, this result can vary.
-* ```oflags: 'c'``` is used when you want to see which country the IP came from / which country the IP belongs to (GeoIP Location). Currently in alpha testing.
+## API ##
+
+### isValid([options]).then(data).catch(data) ###
+```returns``` data
+```throws``` error
 
 ```javascript
 PotatoDetection.isValid({
@@ -31,7 +30,16 @@ PotatoDetection.isValid({
 })
 ```
 
-### Expected Output ###
+### Test ###
+
+#### Settings for Input ####
+* ```flags: 'm'``` is used when you're only looking for the value of "1" as the result. The **m** flag skips the dynamic checks and only uses static ban lists.
+* ```flags: 'b'``` is used when you want to use static ban and dynamic checks with partial bad IP check. **default**
+* ```flags: 'f'``` is used when you want to force the system to do a full lookup, which can take up to 5 seconds.
+* ```oflags: 'b'``` is used when you want to see if the IP is considered as bad IP. Note that when using flags option, this result can vary.
+* ```oflags: 'c'``` is used when you want to see which country the IP came from / which country the IP belongs to (GeoIP Location). Currently in alpha testing.
+
+#### Expected Output ####
 On usage of ```isValid()``` function it will return a promise with
 * ```then``` when the outputted result is lower than your allowed result
 * ```catch``` when the outputted result is greater or equal to your allowed result
