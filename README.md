@@ -8,5 +8,5 @@ npm install --save potato-detection
 ```
 ## Setup ##
 ```javascript
-const PotatoDetection = require('potato-cache')('path-to-folder', 'info@example.com')
+const PotatoDetection = require('potato-cache')('./potatoes', 'info@example.com')
 ```
