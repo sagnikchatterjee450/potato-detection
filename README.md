@@ -1,4 +1,4 @@
-<img height="auto" width="auto" src="https://raw.githubusercontent.com/feross/standard/master/sticker.png" />
+<img height="20%" width="20%" src="https://raw.githubusercontent.com/feross/standard/master/sticker.png" />
 
 Detect if an IP is a Proxy / VPN or if it's considered bad
 
