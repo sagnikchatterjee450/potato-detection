@@ -22,7 +22,7 @@ exports.isValid = (args) => {
       // If flags is not defined, set it
       args.flags = defaultFor(args.flags, 'b')
       // If oflags is not defined, set it
-      args.oflags = defaultFor(args.oflags, 'b')
+      //args.oflags = defaultFor(args.oflags, '')
 
       if (isDefined(args.result)) {
         maxResult = args.result
