@@ -20,3 +20,6 @@ const PotatoDetection = require('potato-cache')('./path', 'info@example.com')
 * ```flags: 'f'``` is used when you want to force the system to do a full lookup, which can take up to 5 seconds.
 * ```oflags: 'b'``` is used when you want to see if the IP is considered as bad IP. Note that when using flags option, this result can vary.
 * ```oflags: 'c'``` is used when you want to see which country the IP came from / which country the IP belongs to (GeoIP Location). Currently in alpha testing.
+
+### Expected Output ###
+On a valid request, the system will return a value between 0 - 1 (inclusive) of how likely the given IP is a proxy
