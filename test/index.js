@@ -1,8 +1,7 @@
-const PotatoDetection = require('../')('./cache', 'marcussa2000@gmail.com')
+const PotatoDetection = require('../')
 
-PotatoDetection.isValid({
-  flags: 'f',
-  oflags: 'bc',
-  ip: '87.59.201.225'
-}).then(console.log)
-  .catch(console.log)
+PotatoDetection.setup('marcussa2000@gmail.com', './cache', '1234')
+
+PotatoDetection.restrictFrom(['DK', 'SE'], '87.59.201.225')
+  .then(() => console.log('Allowed'))
+  .catch(() => console.log('Restricted'))

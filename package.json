@@ -25,8 +25,8 @@
   },
   "homepage": "https://github.com/marcus-sa/potato-detection#readme",
   "dependencies": {
-    "axios": "^0.16.1",
-    "ip": "^1.1.5",
-    "potato-cache": "0.0.18"
+    "axios": "*",
+    "ip": "*",
+    "potato-cache": "*"
   }
 }

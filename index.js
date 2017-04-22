@@ -1,14 +1,14 @@
 'use strict'
 
-var PotatoCache
+const PotatoCache = require('potato-cache')
+
 var contact
 
-module.exports = (path, mail) => {
-  if (isType(path, 'string') && isType(mail, 'string')) {
+exports.setup = (mail, path, secret) => {
+  if (isType(path, 'string') && isType(mail, 'string') && isType(secret, 'string')) {
+    PotatoCache.setup(path, secret)
     contact = mail
-    PotatoCache = require('potato-cache')(path)
   }
-  return exports
 }
 
 exports.isValid = (args) => {
@@ -30,7 +30,6 @@ exports.isValid = (args) => {
       }
 
       var url = 'http://check.getipintel.net/check.php?contact=' + contact + '&' + encodeUrl(args)
-      console.log(url)
       this.get(url, (data) => {
         if (data.status === 'error') {
           reject(data)
@@ -43,6 +42,35 @@ exports.isValid = (args) => {
         }
       })
     }
+  })
+}
+
+exports.allowFrom = (cc, ip) => {
+  return new Promise((resolve, reject) => {
+    this.isValid({
+      oflags: 'bc',
+      ip: ip
+    }).then(data => {
+      // TODO: Since some shit is broken when it comes to arrays
+      // * data.Country in cc
+      // * cc.hasOwnProperty(data.Country)
+      // * cc[data.Country] !== undefined
+      // then it has to be indexOf
+      if(cc.indexOf(data.Country) !== -1) {
+        resolve(data)
+      } else {
+        reject(data)
+      }
+    }).catch(reject)
+  })
+}
+
+exports.restrictFrom = (cc, ip) => {
+  return new Promise((resolve, reject) => {
+    // Do the opposite of allowFrom
+    this.allowFrom(cc, ip)
+    .then(reject)
+    .catch(resolve)
   })
 }
 
