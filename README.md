@@ -9,12 +9,14 @@ Detect if an IP is a Proxy / VPN or if it's considered as bad.
 npm install --save potato-detection
 ```
 ## Setup ##
-Create a directory somewhere, and point the **path** param to it.
+Create a directory somewhere, and point the **path** param to it. Use a secret key to encrypt the data
 
 Include your contact information so the author of [getipintel](http://getipintel.net) can notify me if a problem arise or if there are core changes. In some situations, people query the system in a wrong manner and assume everything is working (but due to the lack of or improper handling of error codes), it's not the case. Since he only have the connecting IP address, he cannot help the person correct the error.
 
 ```javascript
-const PotatoDetection = require('potato-detection')('./path', 'info@example.com')
+const PotatoDetection = require('potato-detection')
+
+PotatoDetection.setup(mail, path, secret)
 ```
 ## API ##
 
