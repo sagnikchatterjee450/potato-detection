@@ -13,7 +13,7 @@ exports.setup = (mail, path, secret) => {
 
 exports.isValid = (args) => {
   return new Promise((resolve, reject) => {
-    var maxResult = '0.9'
+    var maxResult = '0.99'
     if (isType(args, 'object')) {
       // Set output format to json
       args.format = 'json'
@@ -30,7 +30,8 @@ exports.isValid = (args) => {
       }
 
       var url = 'http://check.getipintel.net/check.php?contact=' + contact + '&' + encodeUrl(args)
-      this.get(url, (data) => {
+
+      this.get(url, ip, (data) => {
         if (data.status === 'error') {
           reject(data)
         } else {
@@ -45,12 +46,29 @@ exports.isValid = (args) => {
   })
 }
 
+exports.get = (url, ip, callback) => {
+  // Check if the data is expired in our storage then read otherwise write it
+  PotatoCache.isNotExpiredThenRead(ip, 6 * 60)
+    .then(callback)
+    .catch(() => {
+      // Lazy load the axios package
+      require('axios').get(url)
+        .then(res => {
+          // Write data to the storage
+          PotatoCache.write(ip, res.data, callback)
+        })
+        .catch(onError)
+    })
+}
+
 exports.allowFrom = (cc, ip) => {
+  var args = {}
+  if(isDefined(ip)) args.ip = ip
+  args.oflags = 'bc'
+
   return new Promise((resolve, reject) => {
-    this.isValid({
-      oflags: 'bc',
-      ip: ip
-    }).then(data => {
+    this.isValid(args)
+      .then(data => {
       // TODO: Since some shit is broken when it comes to arrays
       // * data.Country in cc
       // * cc.hasOwnProperty(data.Country)
@@ -72,20 +90,6 @@ exports.restrictFrom = (cc, ip) => {
     .then(reject)
     .catch(resolve)
   })
-}
-
-exports.get = (url, callback) => {
-  if (isType(url, 'string') && isType(callback, 'function')) {
-    PotatoCache.existsThenRead(url)
-      .then(callback)
-      .catch(() => {
-        require('axios').get(url)
-          .then(res => {
-            PotatoCache.write(url, res.data, callback)
-          })
-          .catch(onError)
-      })
-  }
 }
 
 exports.clearCache = (callback) => {
