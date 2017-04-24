@@ -29,9 +29,7 @@ PotatoDetection.setup(mail, path, secret)
 
 ```javascript
 PotatoDetection.isValid({
-  oflags: 'bc' // You can combine both b and c to see
-               // if it's a BadIP and what country the IP belongs to
-  result: '1',
+  flags: 'f',
   ip: 'some ip'
 }).then(data => {
    console.log('IP is valid: ' + data)
