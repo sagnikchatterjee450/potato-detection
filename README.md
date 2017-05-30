@@ -2,6 +2,8 @@
 <img width="100" src="https://raw.githubusercontent.com/feross/standard/master/sticker.png" />
 
 ## Why? ##
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/marcus-sa/potato-detection.svg)](https://greenkeeper.io/)
 Detect if an IP is a Proxy / VPN or if it's considered as bad.
 
 ## Installation ##
